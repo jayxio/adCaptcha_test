@@ -43,6 +43,18 @@ def display():
 @app.route('/hci/<gametype>', methods=['POST','GET'])
 def give_a_game(gametype):
     game_type = 'mnist'
+    classes = ['airplane',
+               'automobile',
+               'bird',
+               'cat',
+               'deer',
+               'dog',
+               'frog',
+               'horse',
+               'ship',
+               'truck']
+    
+    
     captcha_game = construct_captcha_game(game_type)
     captcha_image_list = captcha_game.get_captcha_images()
     captcha_game_groundtruth = captcha_game.get_captcha_groundtruth()
@@ -60,7 +72,7 @@ def give_a_game(gametype):
     question, waited_answer = random.choice(list(groundtruth_dic.items()))
     print(question, waited_answer)
     
-    captcha_game_content["question"] = question
+    captcha_game_content["question"] = classes[question]
     
     return jsonify(captcha_game_content)
 
