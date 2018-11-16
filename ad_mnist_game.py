@@ -102,7 +102,7 @@ class ad_mnist_game(cpg):
 			plt.subplot(1,length,i+1)
 			plt.imshow(captcha_images[i])
 		plt.show()
-
+        
 	def record_result(self):
                 result = {}
 		result["ground_truth"] = self.ground_truth
@@ -112,3 +112,14 @@ class ad_mnist_game(cpg):
                 result["time_used"] = self.time_used
                 
                 return result
+
+        def get_captcha_images(self):
+                captcha_image_list = []
+		for image_path in self.captcha_image_pathlist:
+			image = plt.imread(image_path)
+			captcha_image_list.append(image)
+                return captcha_image_list
+
+        def get_captcha_groundtruth(self):
+
+                return self.ground_truth

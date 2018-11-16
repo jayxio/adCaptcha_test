@@ -22,7 +22,7 @@ def construct_captcha_game(type="ad_mnist_10"):
 	folder_name = cwd+"/"+type
 	# print(filename_list)
 	# print(folder_name)
-	groundtruth = generate_groundtruth(5)
+	groundtruth = generate_groundtruth(9)
 	captcha_images_pathlist = read_image_from_file(folder_name,groundtruth)
 	captcha_game = ad_mnist_game(captcha_images_pathlist,groundtruth)
 	return captcha_game
@@ -91,7 +91,7 @@ def main():
         test_result["error_rate"] = error_rate
         test_result["avg_used_time"] = avg_used_time
         saving_path = os.getcwd()+"/test_result/"+user_id+"_"+game_type+".json"
-        pdb.set_trace()sss
+        pdb.set_trace()
         with open(saving_path, 'w') as outfile:
             json.dump(test_result, outfile)
         '''
