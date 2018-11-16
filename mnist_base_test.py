@@ -3,7 +3,7 @@ import numpy as np
 import random
 import pdb
 import matplotlib.pyplot as plt
-import csv
+import json
 
 from ad_mnist_game import ad_mnist_game
 
@@ -52,7 +52,7 @@ def main():
 	user_id = raw_input("Input your id: ")
 	test_result = {}
 	num_of_test = 1
-	total_test_number = 25
+	total_test_number = 2
         num_of_practice = 1
         total_practice_number = 3
         
@@ -90,12 +90,16 @@ def main():
         avg_used_time = total_time/len(test_result)
         test_result["error_rate"] = error_rate
         test_result["avg_used_time"] = avg_used_time
-        saving_path = os.getcwd()+"/test_result/"+user_id+"_"+game_type+".csv"
+        saving_path = os.getcwd()+"/test_result/"+user_id+"_"+game_type+".json"
+        pdb.set_trace()sss
+        with open(saving_path, 'w') as outfile:
+            json.dump(test_result, outfile)
+        '''
         with open(saving_path, 'wb') as f:  # Just use 'w' mode in 3.x
             w = csv.DictWriter(f, test_result.keys())
             w.writeheader()
             w.writerow(test_result)
-
+        '''
         print("Test done!")
         # pdb.set_trace()
 
